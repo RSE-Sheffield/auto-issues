@@ -30,4 +30,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/action-fail.md
+          update_existing: true
         if: ${{ always() && steps.xfail.outcome == 'failure' }}
