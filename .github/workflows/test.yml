@@ -24,7 +24,7 @@ jobs:
           echo "Deliberate fail."
           echo "${{ github.event_name }}"
           exit 1
-      - name: Report failure via email
+      - name: Report failure via issue
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
