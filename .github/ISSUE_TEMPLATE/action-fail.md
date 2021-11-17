@@ -7,6 +7,6 @@ assignees: ''
 
 ---
 
-A test in this context has failed: {{ date | date('MMMM Do YYYY, h:mm:ss a') }}.
+A scheduled test has failed: {{ date | date('MMMM Do YYYY, h:mm:ss a') }}.
 
 For testing only, please ignore.
