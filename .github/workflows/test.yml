@@ -30,4 +30,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/action-fail.md
-        if: ${{ always() && steps.xfail.outcome == 'failure' }} # && github.event_name == 'schedule'}}
+        if: ${{ always() && steps.xfail.outcome == 'failure' && github.event_name == 'schedule'}}
