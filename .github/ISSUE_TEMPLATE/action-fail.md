@@ -7,6 +7,6 @@ assignees: ''
 
 ---
 
-A test failed: {{ date }}.
+A test in this context has failed: {{ date | date('dddd, MMMM Do') }} {{ tools.context.action }}.
 
 For testing only, please ignore.
