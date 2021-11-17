@@ -1,0 +1,33 @@
+# This workflow will install Python dependencies, run tests, and report the coverage with a variety of Python versions and OSs
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '0 0 * * *' # every midnight
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test fail
+        id: xfail
+        run: |
+          echo "Deliberate fail."
+          echo "${{ github.event_name }}"
+          exit 1
+      - name: Report failure via email
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/ISSUE_TEMPLATE/action-fail.md
+        if: ${{ always() && steps.xfail.outcome == 'failure' }}
